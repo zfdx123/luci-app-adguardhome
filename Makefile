@@ -29,7 +29,6 @@ endef
 
 define Package/luci-app-adguardhome/postinst
 #!/bin/sh
-	chmod 755 /usr/share/AdGuardHome/*
 	/etc/init.d/AdGuardHome enable >/dev/null 2>&1
 	enable=$(uci get AdGuardHome.AdGuardHome.enabled 2>/dev/null)
 	if [ "$enable" == "1" ]; then
