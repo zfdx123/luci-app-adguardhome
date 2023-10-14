@@ -175,7 +175,18 @@ GET_Arch() {
 		Arch=mips64_softfloat
 	;;
 	arm)
-		Arch=arm
+		armV="$(opkg info kernel | grep Architecture | awk -F "[_]" '{print($2)}')"
+		case "${armV}" in
+		cortex-a7)
+			Arch=armv7
+		;;
+		cortex-a6)
+			Arch=armv6
+		;;
+		cortex-a5)
+			Arch=armv5
+		;;
+		esac
 	;;
 	armeb)
 		Arch=armeb
